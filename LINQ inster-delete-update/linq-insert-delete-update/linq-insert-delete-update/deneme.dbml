@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Deneme" Class="denemeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Deneme;Integrated Security=True" SettingsObjectName="linq_insert_delete_update.Properties.Settings" SettingsPropertyName="DenemeConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Kisiler" Member="Kisilers">
+    <Type Name="Kisiler">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ad" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="soyad" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dogumTarihi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="il" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ilce" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Iller" Member="Illers">
+    <Type Name="Iller">
+      <Column Name="ilid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="iller" Member="iller1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Iller_Ilceler" Member="Ilcelers" ThisKey="ilid" OtherKey="ilid" Type="Ilceler" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ilceler" Member="Ilcelers">
+    <Type Name="Ilceler">
+      <Column Name="ilceid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ilce" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ilid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Iller_Ilceler" Member="Iller" ThisKey="ilid" OtherKey="ilid" Type="Iller" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
